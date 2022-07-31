@@ -3,6 +3,9 @@
 
 EAPI=8
 
+inherit multiprocessing
+
+
 DESCRIPTION="pulseaudio command line mixer"
 HOMEPAGE="https://github.com/cdemoulins/pamixer"
 SRC_URI="https://github.com/cdemoulins/pamixer/archive/refs/tags/${PV}.tar.gz"
@@ -21,7 +24,7 @@ BDEPEND="dev-util/meson"
 
 src_compile() {
 	meson setup build --buildtype=release --prefix=/usr
-	meson compile -C build
+	meson compile "-j${makeopts_jobs}" "-l${makeopts_jobs}"  -C buildi
 }
 src_install() {
 	DESTDIR="${D}" meson install -C build

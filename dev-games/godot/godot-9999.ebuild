@@ -23,7 +23,7 @@ src_unpack() {
 
 src_compile() {
 	cd "${P}"
-	scons -j$(makeopts_jobs) platform=linuxbsd target=release_debug || die "compilation failed"
+	scons "-j${makeopts_jobs}" "-l${makeopts_jobs}"  platform=linuxbsd target=release_debug || die "compilation failed"
 }
 
 src_install() {
