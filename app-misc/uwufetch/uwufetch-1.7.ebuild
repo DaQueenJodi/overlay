@@ -28,7 +28,7 @@ S="${WORKDIR}"
 
 src_compile() {
 	cd ${P} || die "failed to change directory: ${PWD}/${P}"
-	make build "-j${makeopts_jobs}" || die "failed to build"
+	make build || die "failed to build"
 }
 
 src_install() {
