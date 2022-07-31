@@ -28,8 +28,7 @@ src_unpack() {
 src_prepare() {
 	# Patch the color values for the transgender flag to more accurate
 	# Thanks jan Luna for the right color values! https://github.com/janLuna/queercat/tree/patch-1
-	sed -i "s/#define TRA_BLUE.*/define TRA_BLU (0x55cdfc)/" main.c || die "failed to apply TRA_BLUE"
-	sed -i "s/#define TRA_PNK.*/#define TRA_PNK (0xf7a8b8)/" main.c || die "failed to apply TRA_PNK"
+	eapply "${FILESDIR}/${PN}_trans.patch"
 	default
 }
 
