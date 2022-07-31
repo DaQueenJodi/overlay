@@ -17,11 +17,9 @@ BDEPEND=""
 
 RESTRICT="mirror"
 
-DESTDIR="${D}/usr/bin/"
-
 S="${WORKDIR}"
 
 src_install() {
-	mkdir -p "${DESTDIR}" || die "failed to make destdir"
-	cp "${P}/${PN}" "${DESTDIR}" || die "failed to install"
+	dodir /usr/bin
+	cp "${P}/${PN}" "${ED}" || die "failed to install"
 }

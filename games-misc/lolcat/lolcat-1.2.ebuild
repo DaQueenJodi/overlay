@@ -25,14 +25,12 @@ BDEPEND=""
 
 RESTRICT="mirror"
 
-DESTDIR="${D}/usr/bin/"
-
 src_compile() {
 	make || die "building failed"
 }
 src_install() {
-	mkdir -p "${DESTDIR}" || die "could not make directory: ${DESTDIR}"
-	make DESTDIR="${DESTDIR}" install || die "installation failed"
+	dodir /usr/bin/
+	make DESTDIR="${ED}" install || die "installation failed"
 }
 
 pkg_postinst() {

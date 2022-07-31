@@ -19,7 +19,6 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND="sys-apps/sed"
 RESTRICT="mirror"
-DESTINATION="${D}/usr/bin"
 
 src_unpack() {
 	git-r3_src_unpack
@@ -33,12 +32,12 @@ src_prepare() {
 }
 
 src_compile() {
-	cc main.c -lm -o queercat || die "failed to compile"
+	cc main.c -lm -o "${PN}" || die "failed to compile"
 }
 
 src_install() {
-	mkdir -p "${DESTINATION}" || die "could not create directory: ${DESTINATION}"
-	cp queercat ${DESTINATION} || die "could not copy 'queercat' to directory: ${DIRECTORY}"
+	dodir /usr/bin
+	cp queercat "${ED}" || die "could not copy 'queercat' to directory: ${ED}"
 }
 
 pkg_postinst() {

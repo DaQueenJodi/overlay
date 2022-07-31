@@ -8,7 +8,7 @@ inherit multiprocessing
 
 DESCRIPTION="pulseaudio command line mixer"
 HOMEPAGE="https://github.com/cdemoulins/pamixer"
-SRC_URI="https://github.com/cdemoulins/pamixer/archive/refs/tags/${PV}.tar.gz"
+SRC_URI="https://github.com/cdemoulins/${PN}/archive/refs/tags/${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,7 +24,7 @@ BDEPEND="dev-util/meson"
 
 src_compile() {
 	meson setup build --buildtype=release --prefix=/usr
-	meson compile "-j${makeopts_jobs}" "-l${makeopts_jobs}"  -C buildi
+	meson compile "-j${makeopts_jobs}" "-l${makeopts_jobs}"  -C build
 }
 src_install() {
 	DESTDIR="${D}" meson install -C build
